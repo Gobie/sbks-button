@@ -1,0 +1,10 @@
+{
+  "name": "sbks-button",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "closure-compiler": "http://dl.google.com/closure-compiler/compiler-latest.zip",
+    "closure-library": "https://github.com/google/closure-library.git",
+    "w3c-custom-element": "https://raw.githubusercontent.com/WebReflection/document-register-element/master/build/document-register-element.js"
+  }
+}

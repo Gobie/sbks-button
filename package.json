@@ -1,0 +1,28 @@
+{
+  "name": "sbks-button",
+  "version": "0.0.1",
+  "description": "SBKS an.ui.Button as custom element",
+  "main": "build/component.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "coffee-script": "^1.8.0",
+    "gulp-concat": "^2.3.5",
+    "gulp": "^3.8.7",
+    "gulp-este": "^1.0.8",
+    "gulp-rimraf": "^0.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gobie/sbks-button.git"
+  },
+  "author": "Michal Brašna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gobie/sbks-button/issues"
+  },
+  "homepage": "https://github.com/Gobie/sbks-button"
+}
