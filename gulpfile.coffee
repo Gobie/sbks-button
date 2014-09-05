@@ -2,6 +2,8 @@ gulp = require 'gulp'
 GulpEste = require 'gulp-este'
 concat = require 'gulp-concat'
 rimraf = require 'gulp-rimraf'
+fs = require 'fs'
+p = require './package.json'
 
 este = new GulpEste __dirname, false, ''
 
@@ -13,6 +15,7 @@ paths =
   component: 'component.js'
   compiler: 'bower_components/closure-compiler/compiler.jar'
   customElement: 'bower_components/w3c-custom-element/index.js'
+  manifest: 'manifest.json'
 
 gulp.task 'coffee', ->
   return este.coffee paths.coffee
@@ -36,4 +39,12 @@ gulp.task 'clean', ['concat'], ->
   return gulp.src paths.buildDir + paths.tempComponent, read: false
     .pipe rimraf()
 
-gulp.task 'default', ['clean']
+gulp.task 'manifest', ->
+  manifest =
+    name: p.name
+    files: [paths.buildDir + paths.component]
+    minified: true
+  fs.writeFile paths.buildDir + paths.manifest, JSON.stringify(manifest, null, 4), (err) ->
+    console.log err if err
+
+gulp.task 'default', ['manifest', 'clean']

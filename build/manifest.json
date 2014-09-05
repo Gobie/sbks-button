@@ -1,5 +1,7 @@
 {
-  "name": "sbks-button",
-  "files": ["component.js"],
-  "minified": true
+    "name": "sbks-button",
+    "files": [
+        "build/component.js"
+    ],
+    "minified": true
 }
