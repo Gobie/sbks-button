@@ -1,0 +1,5 @@
+{
+  "name": "sbks-button",
+  "entryPoint": "an.ui.Button",
+  "minified": false
+}
