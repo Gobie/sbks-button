@@ -54,6 +54,7 @@ gulp.task 'watch', ['default'], ->
 
 gulp.task 'manifest', ->
   manifest =
+    id: p.name
     name:
       element: 'sbks-button'
       class: 'SBKSButton'

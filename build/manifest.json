@@ -1,4 +1,5 @@
 {
+    "id": "sbks-button",
     "name": {
         "element": "sbks-button",
         "class": "SBKSButton"
