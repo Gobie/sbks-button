@@ -48,7 +48,9 @@ gulp.task 'watch', ['default'], ->
 
 gulp.task 'manifest', ->
   manifest =
-    name: p.name
+    name:
+      element: 'sbks-button'
+      class: 'SBKSButton'
     files: [paths.build.component]
     examples: paths.build.examples
     minified: true

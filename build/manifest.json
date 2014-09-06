@@ -1,5 +1,8 @@
 {
-    "name": "sbks-button",
+    "name": {
+        "element": "sbks-button",
+        "class": "SBKSButton"
+    },
     "files": [
         "build/component.js"
     ],

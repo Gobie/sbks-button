@@ -34,5 +34,8 @@ class an.ui.Button.WebComponent extends HTMLElement
     @button.exitDocument()
     return
 
-document.registerElement 'sbks-button',
+###*
+  @export
+###
+SBKSButton = document.registerElement 'sbks-button',
   prototype: an.ui.Button.WebComponent::
