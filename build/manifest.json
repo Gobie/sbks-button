@@ -3,5 +3,6 @@
     "files": [
         "build/component.js"
     ],
+    "examples": "build/examples/",
     "minified": true
 }
