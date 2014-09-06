@@ -5,6 +5,10 @@ rimraf = require 'gulp-rimraf'
 fs = require 'fs'
 p = require './package.json'
 
+removeBaseDir = (path, baseDir) ->
+  regex = new RegExp '^' + baseDir
+  path.replace regex, ''
+
 este = new GulpEste __dirname, false, ''
 
 paths =
@@ -20,6 +24,8 @@ paths =
     component: 'build/component.js'
     manifest: 'build/manifest.json'
     examples: 'build/examples/'
+    readme: 'build/README.md'
+    dir: 'build/'
 
 gulp.task 'coffee', ->
   return este.coffee paths.coffee.src
@@ -51,8 +57,9 @@ gulp.task 'manifest', ->
     name:
       element: 'sbks-button'
       class: 'SBKSButton'
-    files: [paths.build.component]
-    examples: paths.build.examples
+    files: [removeBaseDir paths.build.component, paths.build.dir]
+    examples: removeBaseDir paths.build.examples, paths.build.dir
+    readme: removeBaseDir paths.build.readme, paths.build.dir
     minified: true
 
   fs.writeFile paths.build.manifest, JSON.stringify(manifest, null, 4), (err) ->

@@ -4,8 +4,9 @@
         "class": "SBKSButton"
     },
     "files": [
-        "build/component.js"
+        "component.js"
     ],
-    "examples": "build/examples/",
+    "examples": "examples/",
+    "readme": "README.md",
     "minified": true
 }
