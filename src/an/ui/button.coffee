@@ -10,17 +10,14 @@ class an.ui.Button extends an.ui.Component
     @param {goog.dom.DomHelper=} opt_domHelper
     @constructor
     @extends {an.ui.Component}
-    @export
   ###
   constructor: (@content, opt_renderer, opt_domHelper) ->
     super opt_domHelper
-    @_iconEl = goog.dom.createDom 'i' #, class: 'icon'
     @updated = no
     @contentIsHtml = yes
 
   ###*
     @inheritDoc
-    @export
   ###
   createDom: ->
     super
@@ -34,14 +31,11 @@ class an.ui.Button extends an.ui.Component
     goog.dom.classlist.enable element, 'an-btn', yes
     @setEnabled @enabled
     @setContent @content
-
-    goog.dom.appendChild @getContentElement(), @_iconEl
     return
 
   ###*
     @param {string} content
     @param {boolean|null=} contentIsHtml
-    @export
   ###
   setContent: (@content, contentIsHtml = null) ->
     if contentIsHtml? then @contentIsHtml = contentIsHtml
@@ -54,7 +48,6 @@ class an.ui.Button extends an.ui.Component
 
   ###*
     @return {string}
-    @export
   ###
   getHTMLContent: () ->
     @getElement().innerHTML
@@ -62,27 +55,23 @@ class an.ui.Button extends an.ui.Component
 
   ###*
     @return {string}
-    @export
   ###
   getTextContent: () ->
     @getElement().innerText
 
   ###*
     @param {boolean} updated
-    @export
   ###
   setUpdated: (@updated) ->
 
   ###*
     @return {boolean}
-    @export
   ###
   isUpdated: () ->
     @updated
 
   ###*
     @override
-    @export
   ###
   enterDocument: () ->
     super
@@ -91,19 +80,8 @@ class an.ui.Button extends an.ui.Component
 
   ###*
     @param {goog.events.Event} ev
-    @export
   ###
   handleClick: (ev) ->
     return unless @isEnabled()
-    @dispatchEvent goog.ui.Component.EventType.ACTION
-
-    return
-
-  ###*
-    @param {string} icon
-    @export
-  ###
-  setIcon: (icon) =>
-    goog.dom.classlist.add @_iconEl, icon
-    goog.dom.classlist.add @_iconEl, 'icon'
+    console.log 'clicked'
     return
