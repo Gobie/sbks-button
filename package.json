@@ -3,17 +3,18 @@
   "version": "0.0.1",
   "description": "SBKS an.ui.Button as custom element",
   "main": "build/component.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "bower": "^1.3.9",
     "coffee-script": "^1.8.0",
-    "gulp-concat": "^2.3.5",
     "gulp": "^3.8.7",
+    "gulp-concat": "^2.3.5",
     "gulp-este": "^1.0.8",
     "gulp-rimraf": "^0.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",

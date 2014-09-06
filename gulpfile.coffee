@@ -8,43 +8,52 @@ p = require './package.json'
 este = new GulpEste __dirname, false, ''
 
 paths =
-  coffee: ['src/**/*.coffee']
-  js: ['src/**/*.js', 'bower_components/closure-library/**/*.js']
-  buildDir: 'build/'
-  tempComponent: 'temp_component.js'
-  component: 'component.js'
   compiler: 'bower_components/closure-compiler/compiler.jar'
-  customElement: 'bower_components/w3c-custom-element/index.js'
-  manifest: 'manifest.json'
+  coffee:
+    src: 'src/**/*.coffee'
+  js:
+    src: 'src/**/*.js'
+    closure: 'bower_components/closure-library/**/*.js'
+    customElement: 'bower_components/w3c-custom-element/index.js'
+  build:
+    tempComponent: 'build/temp_component.js'
+    component: 'build/component.js'
+    manifest: 'build/manifest.json'
+    examples: 'build/examples/'
 
 gulp.task 'coffee', ->
-  return este.coffee paths.coffee
+  return este.coffee paths.coffee.src
 
 gulp.task 'compile', ['coffee'], ->
-  return este.compile paths.js, './',
-    fileName: paths.buildDir + paths.tempComponent
+  return este.compile [paths.js.src, paths.js.closure], './',
+    fileName: paths.build.tempComponent
     compilerPath: paths.compiler
     compilerFlags:
-      closure_entry_point: 'an.ui.Button'
+      closure_entry_point: 'an.ui.Button.WebComponent'
       compilation_level: 'ADVANCED'
       output_wrapper: '(function(){%output%})();'
       generate_exports: null
 
 gulp.task 'concat', ['compile'], ->
-  return gulp.src [paths.customElement, paths.buildDir + paths.tempComponent]
-    .pipe concat(paths.component)
-    .pipe gulp.dest paths.buildDir
+  return gulp.src [paths.js.customElement, paths.build.tempComponent]
+    .pipe concat(paths.build.component)
+    .pipe gulp.dest './'
 
 gulp.task 'clean', ['concat'], ->
-  return gulp.src paths.buildDir + paths.tempComponent, read: false
+  return gulp.src [paths.build.tempComponent, paths.js.src], read: false
     .pipe rimraf()
+
+gulp.task 'watch', ['default'], ->
+  gulp.watch paths.coffee.src, ['clean']
 
 gulp.task 'manifest', ->
   manifest =
     name: p.name
-    files: [paths.buildDir + paths.component]
+    files: [paths.build.component]
+    examples: paths.build.examples
     minified: true
-  fs.writeFile paths.buildDir + paths.manifest, JSON.stringify(manifest, null, 4), (err) ->
+
+  fs.writeFile paths.build.manifest, JSON.stringify(manifest, null, 4), (err) ->
     console.log err if err
 
 gulp.task 'default', ['manifest', 'clean']
