@@ -22,7 +22,12 @@ class an.ui.Button.WebComponent extends HTMLElement
     @export
   ###
   attachedCallback: =>
-    @button.setContent @innerHTML, yes
+    content = @getAttribute 'content'
+    if content
+      @button.setContent content, yes
+    else
+      @button.setContent @innerHTML, yes
+
     @innerHTML = ''
     @button.render @
     return
