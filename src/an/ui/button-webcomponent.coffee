@@ -21,7 +21,7 @@ class an.ui.Button.WebComponent extends HTMLElement
   ###*
     @export
   ###
-  attachedCallback: =>
+  attachedCallback: ->
     content = @getAttribute 'content'
     if content
       @button.setContent content, yes
@@ -35,7 +35,7 @@ class an.ui.Button.WebComponent extends HTMLElement
   ###*
     @export
   ###
-  detachedCallback: =>
+  detachedCallback: ->
     @button.exitDocument()
     return
 
